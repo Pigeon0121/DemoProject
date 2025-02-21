@@ -1,19 +1,16 @@
 package com.sjonline.model;
 
 import java.util.Date;
-import org.apache.ibatis.annotations.*;
 
 public class User {
 
     // 主键（自增）
-   
     private Long id;
 
     // 备注
     private String remark;
 
     // 删除标记（0-未删除，1-已删除）
-    
     private Integer delFlag;
 
     // 创建时间
