@@ -1,0 +1,92 @@
+package com.sjonline.model;
+
+import java.util.Date;
+import org.apache.ibatis.annotations.*;
+
+public class User {
+
+    // 主键（自增）
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    // 备注
+    private String remark;
+
+    // 删除标记（0-未删除，1-已删除）
+    @Column(name = "del_fg", nullable = false, columnDefinition = "SMALLINT DEFAULT 0 COMMENT '删除标记（0:未删除，1:已删除）'")
+    private Integer delFlag;
+
+    // 创建时间
+    @Column(name = "create_time")
+    private Date createTime;
+
+    // 更新时间
+    @Column(name = "update_time")
+    private Date updateTime;
+
+    // 创建者ID
+    @Column(name = "create_id")
+    private Long createId;
+
+    // 更新者ID
+    @Column(name = "update_id")
+    private Long updateId;
+
+    // 手动编写 Getter/Setter
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Long getCreateId() {
+        return createId;
+    }
+
+    public void setCreateId(Long createId) {
+        this.createId = createId;
+    }
+
+    public Long getUpdateId() {
+        return updateId;
+    }
+
+    public void setUpdateId(Long updateId) {
+        this.updateId = updateId;
+    }
+}
