@@ -3,15 +3,18 @@ package com.sjonline.service;
 import com.sjonline.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface UserService {
 
-    // 查询用户（根据ID）
     User getUserById(Long id);
 
-    // 新增用户
+    List<User> findAll();
+
     void saveUser(User user);
 
-    // 删除用户（逻辑删除）
+    void updateUser(User user);
+
     void deleteUserById(Long id);
 }

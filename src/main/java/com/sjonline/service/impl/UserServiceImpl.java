@@ -1,6 +1,8 @@
 package com.sjonline.service.impl;
 
 import com.sjonline.mapper.UserMapper;
+
+import java.util.List;
 import com.sjonline.model.User;
 import com.sjonline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,15 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUserById(Long id) {
         userMapper.deleteUserById(id);
+    }
+    
+    @Override
+    public List<User> findAll() {
+        return userMapper.findAllUsers(); 
+    }
+
+    @Override
+    public void updateUser(User user) {
+        userMapper.updateUser(user);
     }
 }
