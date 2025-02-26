@@ -20,14 +20,19 @@
         <!-- 全局编码配置 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+
+	<dependency>
+    	<groupId>org.springframework</groupId>
+   	 	<artifactId>spring-context</artifactId>
+	</dependency>
 
 		<dependency>
 	      <groupId>org.springframework.boot</groupId>
@@ -44,7 +49,7 @@
 	      </exclusions>-->
 	    </dependency>
 	    
-		<dependency>
+	    	<dependency>
 		    <groupId>org.apache.tomcat.embed</groupId>
 		    <artifactId>tomcat-embed-core</artifactId>
 		    </dependency>
@@ -53,6 +58,7 @@
 		    <artifactId>tomcat-juli</artifactId>
 		    <version>10.1.36</version>
 		</dependency>
+	
 	
 		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -78,6 +84,8 @@
         		<optional>true</optional>
     	</dependency>-->
 	</dependencies>
+	
+	
 
 	<build>
 		<plugins>

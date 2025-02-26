@@ -3,7 +3,7 @@ package com.sjonline;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "com.sjonline")
+@SpringBootApplication
 public class TestSpringbootApplication {
 
 	public static void main(String[] args) {
