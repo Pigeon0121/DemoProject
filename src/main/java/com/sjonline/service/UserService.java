@@ -1,9 +1,10 @@
 package com.sjonline.service;
 
-import com.sjonline.model.User;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.sjonline.model.User;
 
 @Service
 public interface UserService {
