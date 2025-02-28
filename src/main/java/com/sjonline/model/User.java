@@ -24,6 +24,18 @@ public class User {
 
     // 更新者ID
     private Long updateId;
+    
+    private Long campusId;
+    
+    private String campusName;
+
+	public String getCampusName() {
+		return campusName;
+	}
+
+	public void setCampusName(String campusName) {
+		this.campusName = campusName;
+	}
 
 	public Long getId() {
 		return id;
@@ -81,4 +93,9 @@ public class User {
 		this.updateId = updateId;
 	}
 
+    public Long getCampusId() { return campusId; }
+    
+    public void setCampusId(Long campusId) { this.campusId = campusId; }
+    
+    
 }

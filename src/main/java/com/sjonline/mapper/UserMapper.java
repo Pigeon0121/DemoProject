@@ -10,9 +10,8 @@ import com.sjonline.model.User;
 
 
 
-
 @Mapper
-public interface UserMapper {
+public interface UserMapper  {
 
     User getUserById(Long id);
 
@@ -21,6 +20,11 @@ public interface UserMapper {
     List<User> findAllUsers();
     
     void updateUser(User user);
+    void updateById(User user);
     
     void deleteUserById(Long id);
+    
+    User getUserWithCampus(Long id);
+    
+    List<User> findAllUsersWithCampus();
 }

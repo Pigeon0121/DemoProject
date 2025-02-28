@@ -1,6 +1,7 @@
 package com.sjonline.controller;
 
 import com.sjonline.model.User;
+import com.sjonline.service.CampusService;
 import com.sjonline.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private CampusService campusService;
+    
     @GetMapping
     public List<User> getAllUsers() {
         List<User> users = userService.findAll();
@@ -42,7 +46,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<User	> updateUser(@PathVariable Long id, @RequestBody User user) {
         if (user.getId() == null || user.getId() != id) {
             return new ResponseEntity<>(user, HttpStatus.CREATED);
         }

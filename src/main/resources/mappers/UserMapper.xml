@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "file:///C:/Users/Bronya/git/DemoProject/src/main/resources/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sjonline.mapper.UserMapper">
 
     <!-- 查询用户 -->
@@ -16,25 +16,27 @@
     </select>
 
     <!-- 新增用户 -->
-    <insert id="saveUser">
-        INSERT INTO user (
-            remark, del_fg, 
-            create_time, update_time, 
-            create_id, update_id
-        ) 
-        VALUES (
-            #{remark}, #{delFlag}, 
-            #{createTime}, #{updateTime}, 
-            #{createId}, #{updateId}
-        )
-    </insert>
+	<insert id="saveUser" parameterType="com.sjonline.model.User">
+	    INSERT INTO user (
+	        remark, del_fg, 
+	        create_time, update_time, 
+	        create_id, update_id,
+	        campus_id
+	    ) 
+	    VALUES (
+	        #{remark}, #{delFlag}, 
+	        #{createTime}, #{updateTime}, 
+	        #{createId}, #{updateId},
+	        #{campusId}
+	    )
+	</insert>
 
     <!-- 删除用户 -->
-    <update id="deleteUserById">
-        UPDATE user 
-        SET del_fg = 1 
-        WHERE id = #{id}
-    </update>
+	<update id="deleteUserById">
+	    UPDATE user 
+	    SET del_fg = 1  <!-- 使用数据库列名 -->
+	    WHERE id = #{id}
+	</update>
     
     <select id="findAllUsers" resultType="com.sjonline.model.User">
         SELECT 
@@ -53,4 +55,45 @@
             #{id}
         </foreach>
     </delete>
+    
+    
+	<select id="getUserWithCampus" resultMap="userResultMap">
+	    SELECT 
+	        u.*, c.campus_name 
+	    FROM user u
+	    LEFT JOIN campus c ON u.campus_id = c.id 
+	    WHERE u.id = #{id} AND u.del_fg = 0
+	</select>
+
+	<select id="findAllUsersWithCampus" resultMap="userResultMap">
+	    SELECT 
+	        u.*, c.campus_name AS campusName 
+	    FROM user u
+	    LEFT JOIN campus c ON u.campus_id = c.id  
+	    WHERE u.delFlag = 0
+	</select>
+	
+	<update id="updateUser" parameterType="com.sjonline.model.User">
+	    UPDATE user 
+	    SET 
+	        remark = #{remark},
+	        del_fg = #{delFlag},
+	        update_time = #{updateTime},
+	        update_id = #{updateId},
+	        campus_id = #{campusId}
+	    WHERE 
+	        id = #{id}
+	</update>
+	
+	<resultMap id="userResultMap" type="com.sjonline.model.User">
+    <id property="id" column="id"/>
+    <result property="remark" column="remark"/>
+    <result property="delFlag" column="del_fg"/>
+    <result property="createTime" column="create_time"/>
+    <result property="updateTime" column="update_time"/>
+    <result property="createId" column="create_id"/>
+    <result property="updateId" column="update_id"/>
+    <result property="campusId" column="campus_id"/>
+    <result property="campusName" column="campus_name"/> <!-- 关联字段 -->
+</resultMap>
 </mapper>

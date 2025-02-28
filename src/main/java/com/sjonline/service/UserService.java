@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.sjonline.model.User;
 
 @Service
+
 public interface UserService {
 
     User getUserById(Long id);
@@ -18,4 +19,9 @@ public interface UserService {
     void updateUser(User user);
 
     void deleteUserById(Long id);
+    
+    void setUserCampus(Long userId, Long campusId);
+    
+    void updateById(User user);
 }
+
